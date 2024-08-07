@@ -3,7 +3,7 @@ pipeline {
     environment {
         IMAGE_NAME= 'my-new-image'
         IMAGE_REPO='lakshman017/my-new-image'
-        IMAGE_VERSION='v3'
+        IMAGE_VERSION='v5'
         DOCKERHUB_CREDS=credentials('laksh_docker_creds')
         COSIGN_PASSWORD=credentials('cosign-password')
         COSIGN_PRIVATE_KEY=credentials('cosign-private-key')
