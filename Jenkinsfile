@@ -29,7 +29,7 @@ pipeline {
                    sh  'bandit -r . || true'
                 }
             }
-          }
+          }/*
         stage('Build Docker Image') {
             steps {
                 script {
@@ -51,7 +51,7 @@ pipeline {
                     sh 'sudo docker push $IMAGE_REPO:$IMAGE_VERSION'
                 }
             }
-        }
+        }*/
         stage ('Checkov Scan') {
             steps {
                 script {
