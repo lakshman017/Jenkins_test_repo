@@ -1,8 +1,8 @@
 pipeline {
     agent any
     environment {
-        IMAGE_NAME= 'my-image'
-        IMAGE_REPO='lakshman017/my-image'
+        IMAGE_NAME= 'my-new-image'
+        IMAGE_REPO='lakshman017/my-new-image'
         IMAGE_VERSION='v3'
         DOCKERHUB_CREDS=credentials('laksh_docker_creds')
         COSIGN_PASSWORD=credentials('cosign-password')
@@ -39,7 +39,7 @@ pipeline {
         stage('Docker Login') {
             steps {
                 script {
-                    withCredentials([usernamePassword(credentialsId: 'swetha-docker-creds', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
+                    withCredentials([usernamePassword(credentialsId: 'laksh_docker_creds', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
                         sh """
                             echo $PASSWORD | docker login -u $USERNAME --password-stdin
                         """
