@@ -1,8 +1,8 @@
 pipeline {
     agent any
     environment {
-        IMAGE_NAME= 'my-final-image'
-        IMAGE_REPO='lakshman017/my-final-image'
+        IMAGE_NAME= 'my-image'
+        IMAGE_REPO='lakshman017/my-image'
         IMAGE_VERSION='v3'
         DOCKERHUB_CREDS=credentials('laksh_docker_creds')
         COSIGN_PASSWORD=credentials('cosign-password')
