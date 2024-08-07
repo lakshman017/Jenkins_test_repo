@@ -1,11 +1,10 @@
 pipeline {
     agent any
     environment {
-        GITHUB_CREDS=credentials('swetha-github-creds')
         IMAGE_NAME= 'my-final-image'
-        IMAGE_REPO='sriswetha06/my-final-image'
+        IMAGE_REPO='lakshman017/my-final-image'
         IMAGE_VERSION='v3'
-        DOCKERHUB_CREDS=credentials('swetha-docker-creds')
+        DOCKERHUB_CREDS=credentials('laksh_docker_creds')
         COSIGN_PASSWORD=credentials('cosign-password')
         COSIGN_PRIVATE_KEY=credentials('cosign-private-key')
         COSIGN_PUBLIC_KEY=credentials('cosign-public-key')
@@ -29,7 +28,7 @@ pipeline {
                    sh  'bandit -r . || true'
                 }
             }
-          }/*
+          }
         stage('Build Docker Image') {
             steps {
                 script {
@@ -39,7 +38,7 @@ pipeline {
         }
            stage('Docker Login'){
             steps{
-                withCredentials([usernamePassword(credentialsId: 'swetha-docker-creds', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
+                withCredentials([usernamePassword(credentialsId: 'laksh_docker_creds', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
                       sh "docker login -u $USERNAME -p $PASSWORD"
                 }
             }
@@ -51,7 +50,7 @@ pipeline {
                     sh 'sudo docker push $IMAGE_REPO:$IMAGE_VERSION'
                 }
             }
-        }*/
+        }
         stage ('Checkov Scan') {
             steps {
                 script {
