@@ -43,7 +43,7 @@ pipeline {
                 }
             }
         }
-        stage ('Taag and Push') {
+        stage ('Tag and Push') {
             steps {
                 script {
                     sh 'sudo docker tag $IMAGE_NAME $IMAGE_REPO:$IMAGE_VERSION'
