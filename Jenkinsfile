@@ -36,14 +36,10 @@ pipeline {
                 }
             }
         }
-        stage('Docker Login') {
-            steps {
-                script {
-                    withCredentials([usernamePassword(credentialsId: 'laksh_docker_creds', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
-                        sh """
-                            echo $PASSWORD | docker login -u $USERNAME --password-stdin
-                        """
-                    }
+           stage('Docker Login'){
+            steps{
+                withCredentials([usernamePassword(credentialsId: 'swetha-docker-creds', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
+                      sh "docker login -u $USERNAME -p $PASSWORD"
                 }
             }
         }
